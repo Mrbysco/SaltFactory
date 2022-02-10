@@ -1,0 +1,11 @@
+{
+  "crying": {
+    "subtitle": "saltfactory.subtitle.crying",
+    "sounds": [
+      "saltfactory:crying/crying1",
+      "saltfactory:crying/crying2",
+      "saltfactory:crying/crying3",
+      "saltfactory:crying/crying4"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "saltfactory:teary_bowl"
+  },
+  "result": "saltfactory:dried_tears",
+  "experience": 0.01,
+  "cookingtime": 200
+}
