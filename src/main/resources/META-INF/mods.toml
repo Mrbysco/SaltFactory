@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[38,)"
+loaderVersion="[40,)"
 issueTrackerURL="https://github.com/Mrbysco/SaltFactory/issues"
 license="MIT"
 
@@ -8,7 +8,7 @@ modId="saltfactory"
 version="${file.jarVersion}"
 displayName="Salt Factory"
 logoFile="logo.png"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/salt-facotry"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/salt-factory"
 authors="Mrbysco"
 description='''
 Gonna cry? want to turn those tears into salt? Well, you're in the right place.
@@ -17,6 +17,6 @@ credits="Darkosto for the idea"
 [[dependencies.saltfactory]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.18,1.19)"
+versionRange="[1.18.2,1.19)"
 ordering="NONE"
 side="BOTH"
