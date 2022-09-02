@@ -14,7 +14,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -32,6 +32,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.nio.file.Path;
 import java.util.function.Consumer;
+
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SaltDatagen {
 	@SubscribeEvent
@@ -151,7 +152,7 @@ public class SaltDatagen {
 		private void makeCryingBowl(Item item) {
 			String path = item.getRegistryName().getPath();
 
-			for(int i = 0; i < 5; i++) {
+			for (int i = 0; i < 5; i++) {
 				String bowlPath = i == 0 ? path + "_empty" : path + "_" + i;
 				getBuilder(bowlPath)
 						.parent(new UncheckedModelFile(mcLoc("item/generated")))
@@ -165,15 +166,15 @@ public class SaltDatagen {
 			super(dataGenerator, blockTagsProvider, SaltFactory.MOD_ID, existingFileHelper);
 		}
 
-		public static final Tag.Named<Item> SALT = forgeTag("salt");
+		public static final TagKey<Item> SALT = forgeTag("salt");
 
 		@Override
 		protected void addTags() {
 			this.tag(SALT).add(SaltRegistry.DRIED_TEARS.get());
 		}
 
-		private static Tag.Named<Item> forgeTag(String name) {
-			return ItemTags.bind(new ResourceLocation("forge", name).toString());
+		private static TagKey<Item> forgeTag(String name) {
+			return ItemTags.create(new ResourceLocation("forge", name));
 		}
 	}
 }

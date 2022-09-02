@@ -25,7 +25,7 @@ public class CryingbowlItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
 		ItemStack itemstack = player.getItemInHand(interactionHand);
 		int tears = itemstack.getTag() != null ? itemstack.getTag().getInt("Tears") : 0;
-		if(tears < 10) {
+		if (tears < 10) {
 			player.startUsingItem(interactionHand);
 		}
 		return InteractionResultHolder.consume(itemstack);
@@ -38,14 +38,14 @@ public class CryingbowlItem extends Item {
 
 	@Override
 	public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int useTime) {
-		if(useTime <= 440) {
-			if(level.getGameTime() % 40 == 0) {
+		if (useTime <= 440) {
+			if (level.getGameTime() % 40 == 0) {
 				level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SaltRegistry.CRYING.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
 
 				if (!level.isClientSide) {
 					CompoundTag tag = stack.getOrCreateTag();
 					int tears = tag.getInt("Tears");
-					if(tears < 10) {
+					if (tears < 10) {
 						tag.putInt("Tears", tears + 1);
 						stack.setTag(tag);
 					}
@@ -60,11 +60,11 @@ public class CryingbowlItem extends Item {
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int index, boolean p_41408_) {
 		if (!level.isClientSide) {
 			int tears = stack.getTag() != null ? stack.getTag().getInt("Tears") : 0;
-			if(tears == 10) {
+			if (tears == 10) {
 				ItemStack tearyStack = new ItemStack(SaltRegistry.TEARY_BOWL.get());
 				stack.shrink(1);
-				if(entity instanceof Player player) {
-					if(!player.addItem(tearyStack)){
+				if (entity instanceof Player player) {
+					if (!player.addItem(tearyStack)) {
 						ItemEntity itemEntity = new ItemEntity(entity.level, entity.getX(), entity.getY(), entity.getZ(), tearyStack);
 						level.addFreshEntity(itemEntity);
 					}
@@ -80,7 +80,7 @@ public class CryingbowlItem extends Item {
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
 		ItemStack itemstack = super.finishUsingItem(stack, level, entity);
 		int tears = stack.getTag() != null ? stack.getTag().getInt("Tears") : 0;
-		if(tears == 10) {
+		if (tears == 10) {
 			return new ItemStack(SaltRegistry.TEARY_BOWL.get());
 		} else {
 			return itemstack;

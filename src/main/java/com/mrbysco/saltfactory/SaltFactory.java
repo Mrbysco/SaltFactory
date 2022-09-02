@@ -14,23 +14,23 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(SaltFactory.MOD_ID)
 public class SaltFactory {
-    public static final String MOD_ID = "saltfactory";
-    public static final Logger LOGGER = LogManager.getLogger();
+	public static final String MOD_ID = "saltfactory";
+	public static final Logger LOGGER = LogManager.getLogger();
 
-    public static final CreativeModeTab TAB_FACTORY = new CreativeModeTab(MOD_ID) {
-        public ItemStack makeIcon() {
-            return new ItemStack(SaltRegistry.CRYING_BOWL.get());
-        }
-    };
+	public static final CreativeModeTab TAB_FACTORY = new CreativeModeTab(MOD_ID) {
+		public ItemStack makeIcon() {
+			return new ItemStack(SaltRegistry.CRYING_BOWL.get());
+		}
+	};
 
-    public SaltFactory() {
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+	public SaltFactory() {
+		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        SaltRegistry.ITEMS.register(eventBus);
-        SaltRegistry.SOUND_EVENTS.register(eventBus);
+		SaltRegistry.ITEMS.register(eventBus);
+		SaltRegistry.SOUND_EVENTS.register(eventBus);
 
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-            eventBus.addListener(ClientHandler::onClientSetup);
-        });
-    }
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+			eventBus.addListener(ClientHandler::onClientSetup);
+		});
+	}
 }
