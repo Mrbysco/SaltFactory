@@ -38,17 +38,15 @@ public class CryingbowlItem extends Item {
 
 	@Override
 	public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int useTime) {
-		if (useTime <= 440) {
-			if (level.getGameTime() % 40 == 0) {
-				level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SaltRegistry.CRYING.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+		if (useTime <= 440 && level.getGameTime() % 40 == 0) {
+			level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SaltRegistry.CRYING.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
 
-				if (!level.isClientSide) {
-					CompoundTag tag = stack.getOrCreateTag();
-					int tears = tag.getInt("Tears");
-					if (tears < 10) {
-						tag.putInt("Tears", tears + 1);
-						stack.setTag(tag);
-					}
+			if (!level.isClientSide) {
+				CompoundTag tag = stack.getOrCreateTag();
+				int tears = tag.getInt("Tears");
+				if (tears < 10) {
+					tag.putInt("Tears", tears + 1);
+					stack.setTag(tag);
 				}
 			}
 		}

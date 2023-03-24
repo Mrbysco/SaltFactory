@@ -15,7 +15,11 @@ public class SaltRegistry {
 
 	public static final RegistryObject<SoundEvent> CRYING = SOUND_EVENTS.register("crying", () -> new SoundEvent(new ResourceLocation(SaltFactory.MOD_ID, "crying")));
 
-	public static final RegistryObject<Item> CRYING_BOWL = ITEMS.register("crying_bowl", () -> new CryingbowlItem(new Item.Properties().tab(SaltFactory.TAB_FACTORY).stacksTo(1)));
-	public static final RegistryObject<Item> TEARY_BOWL = ITEMS.register("teary_bowl", () -> new Item(new Item.Properties().tab(SaltFactory.TAB_FACTORY).stacksTo(1)));
-	public static final RegistryObject<Item> DRIED_TEARS = ITEMS.register("dried_tears", () -> new Item(new Item.Properties().tab(SaltFactory.TAB_FACTORY)));
+	public static final RegistryObject<Item> CRYING_BOWL = ITEMS.register("crying_bowl", () -> new CryingbowlItem(itemBuilder().stacksTo(1)));
+	public static final RegistryObject<Item> TEARY_BOWL = ITEMS.register("teary_bowl", () -> new Item(itemBuilder().stacksTo(1)));
+	public static final RegistryObject<Item> DRIED_TEARS = ITEMS.register("dried_tears", () -> new Item(itemBuilder().tab(SaltFactory.TAB_FACTORY)));
+
+	private static Item.Properties itemBuilder() {
+		return new Item.Properties().tab(SaltFactory.TAB_FACTORY);
+	}
 }
